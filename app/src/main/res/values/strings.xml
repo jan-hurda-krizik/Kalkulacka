@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Kalkulačka</string>
+    <string name="number1">Číslo 1</string>
+    <string name="number2">Číslo 2</string>
+    <string name="calculate">Vypočítat</string>
+    <string name="result">Výsledek</string>
+</resources>
