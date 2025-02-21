@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.kalkulacka;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,15 +18,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Nastavíme layout z activity_main.xml
         setContentView(R.layout.activity_main);
 
-        // Inicializace komponent z layoutu
+        // Inicializace komponent
         editTextNumber1 = findViewById(R.id.editTextNumber1);
         editTextNumber2 = findViewById(R.id.editTextNumber2);
         buttonCalculate = findViewById(R.id.buttonCalculate);
         textViewResult = findViewById(R.id.textViewResult);
 
-        // Listener pro tlačítko - provede sčítání
+        // Listener tlačítka pro sčítání
         buttonCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Metoda provede sčítání dvou zadaných čísel
+    // Metoda, která provede sčítání dvou čísel
     private void calculateAddition() {
         String input1 = editTextNumber1.getText().toString().trim();
         String input2 = editTextNumber2.getText().toString().trim();
