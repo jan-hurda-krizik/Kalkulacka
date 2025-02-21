@@ -5,4 +5,10 @@
     <string name="number2">Číslo 2</string>
     <string name="calculate">Vypočítat</string>
     <string name="result">Výsledek</string>
+
+    <!-- Operace dostupné ve verzi 2 -->
+    <string-array name="operations_array_v2">
+        <item>Sčítání</item>
+        <item>Odčítání</item>
+    </string-array>
 </resources>
