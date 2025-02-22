@@ -27,7 +27,7 @@
         android:id="@+id/spinnerOperation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:entries="@array/operations_array_v2" />
+        android:entries="@array/operations_array_v3" />
 
     <!-- Tlačítko pro výpočet -->
     <Button

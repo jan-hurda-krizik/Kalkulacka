@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         buttonCalculate = findViewById(R.id.buttonCalculate);
         textViewResult = findViewById(R.id.textViewResult);
 
-        // Nastavení listeneru tlačítka pro výpočet
+        // Listener tlačítka pro výpočet
         buttonCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,8 +58,24 @@ public class MainActivity extends AppCompatActivity {
                 result = num1 + num2;
             } else if (operation.equals("Odčítání")) {
                 result = num1 - num2;
+            } else if (operation.equals("Násobení")) {
+                result = num1 * num2;
+            } else if (operation.equals("Dělení")) {
+                if (num2 == 0) {
+                    textViewResult.setText("Nelze dělit nulou");
+                    return;
+                }
+                result = num1 / num2;
+            } else if (operation.equals("Modulo")) {
+                if (num2 == 0) {
+                    textViewResult.setText("Nelze dělit nulou");
+                    return;
+                }
+                result = num1 % num2;
+            } else {
+                textViewResult.setText("Neznámá operace");
+                return;
             }
-
             textViewResult.setText(String.valueOf(result));
         } catch (NumberFormatException e) {
             textViewResult.setText("Neplatný vstup");

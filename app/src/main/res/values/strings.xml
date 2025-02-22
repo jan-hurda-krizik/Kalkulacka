@@ -6,9 +6,12 @@
     <string name="calculate">Vypočítat</string>
     <string name="result">Výsledek</string>
 
-    <!-- Operace dostupné ve verzi 2 -->
-    <string-array name="operations_array_v2">
+    <!-- Operace dostupné ve verzi 3 -->
+    <string-array name="operations_array_v3">
         <item>Sčítání</item>
         <item>Odčítání</item>
+        <item>Násobení</item>
+        <item>Dělení</item>
+        <item>Modulo</item>
     </string-array>
 </resources>
