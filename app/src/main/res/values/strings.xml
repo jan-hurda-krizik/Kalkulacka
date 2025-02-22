@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Název aplikace -->
     <string name="app_name">Kalkulačka</string>
+    <!-- Nápovědy pro vstupy -->
     <string name="number1">Číslo 1</string>
     <string name="number2">Číslo 2</string>
+    <!-- Text tlačítka -->
     <string name="calculate">Vypočítat</string>
+    <!-- Výchozí text pro zobrazení výsledku -->
     <string name="result">Výsledek</string>
 
-    <!-- Operace dostupné ve verzi 4 -->
+    <!-- Řetězcové pole operací dostupných ve verzi 4 -->
     <string-array name="operations_array_v4">
         <item>Sčítání</item>
         <item>Odčítání</item>
