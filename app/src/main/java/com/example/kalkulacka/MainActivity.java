@@ -7,8 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import com.example.kalkulacka.R;
+import java.math.BigInteger;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         buttonCalculate = findViewById(R.id.buttonCalculate);
         textViewResult = findViewById(R.id.textViewResult);
 
-        // Listener tlačítka pro výpočet
+        // Listener tlačítka, který spustí výpočet
         buttonCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,47 +37,91 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Metoda pro provedení výpočtu dle zvolené operace
+    // Metoda provede výpočet podle vybrané operace
     private void calculate() {
         String operation = spinnerOperation.getSelectedItem().toString();
         String input1 = editTextNumber1.getText().toString().trim();
         String input2 = editTextNumber2.getText().toString().trim();
 
-        if (input1.isEmpty() || input2.isEmpty()) {
-            textViewResult.setText("Zadejte obě čísla");
+        // Ověření, že je zadáno číslo 1
+        if (input1.isEmpty()) {
+            textViewResult.setText("Zadejte číslo 1");
             return;
         }
 
         try {
             double num1 = Double.parseDouble(input1);
-            double num2 = Double.parseDouble(input2);
-            double result = 0;
-
-            if (operation.equals("Sčítání")) {
-                result = num1 + num2;
-            } else if (operation.equals("Odčítání")) {
-                result = num1 - num2;
-            } else if (operation.equals("Násobení")) {
-                result = num1 * num2;
-            } else if (operation.equals("Dělení")) {
-                if (num2 == 0) {
-                    textViewResult.setText("Nelze dělit nulou");
+            double num2 = 0;
+            // U operace "Faktoriál" se číslo 2 nevyužívá
+            if (!operation.equals("Faktoriál")) {
+                if (input2.isEmpty()) {
+                    textViewResult.setText("Zadejte číslo 2");
                     return;
                 }
-                result = num1 / num2;
-            } else if (operation.equals("Modulo")) {
-                if (num2 == 0) {
-                    textViewResult.setText("Nelze dělit nulou");
-                    return;
-                }
-                result = num1 % num2;
-            } else {
-                textViewResult.setText("Neznámá operace");
-                return;
+                num2 = Double.parseDouble(input2);
             }
-            textViewResult.setText(String.valueOf(result));
+
+            String resultText;
+
+            switch (operation) {
+                case "Sčítání":
+                    resultText = String.valueOf(num1 + num2);
+                    break;
+                case "Odčítání":
+                    resultText = String.valueOf(num1 - num2);
+                    break;
+                case "Násobení":
+                    resultText = String.valueOf(num1 * num2);
+                    break;
+                case "Dělení":
+                    if (num2 == 0) {
+                        resultText = "Nelze dělit nulou";
+                    } else {
+                        resultText = String.valueOf(num1 / num2);
+                    }
+                    break;
+                case "Modulo":
+                    if (num2 == 0) {
+                        resultText = "Nelze dělit nulou";
+                    } else {
+                        resultText = String.valueOf(num1 % num2);
+                    }
+                    break;
+                case "Ntou mocninu":
+                    resultText = String.valueOf(Math.pow(num1, num2));
+                    break;
+                case "Ntou odmocninu":
+                    if (num2 == 0) {
+                        resultText = "Nulá odmocnina není definována";
+                    } else {
+                        resultText = String.valueOf(Math.pow(num1, 1.0 / num2));
+                    }
+                    break;
+                case "Faktoriál":
+                    // Kontrola, zda je číslo nezáporné a celé
+                    if (num1 < 0 || num1 != (int) num1) {
+                        resultText = "Faktoriál je definován jen pro nezáporná celá čísla";
+                    } else {
+                        resultText = factorial((int) num1).toString();
+                    }
+                    break;
+                default:
+                    resultText = "Neznámá operace";
+                    break;
+            }
+
+            textViewResult.setText(resultText);
         } catch (NumberFormatException e) {
             textViewResult.setText("Neplatný vstup");
+        }
+    }
+
+    // Rekurzivní metoda pro výpočet faktoriálu
+    private BigInteger factorial(int n) {
+        if (n == 0 || n == 1) {
+            return BigInteger.ONE;
+        } else {
+            return BigInteger.valueOf(n).multiply(factorial(n - 1));
         }
     }
 }

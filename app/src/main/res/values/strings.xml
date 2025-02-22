@@ -6,12 +6,15 @@
     <string name="calculate">Vypočítat</string>
     <string name="result">Výsledek</string>
 
-    <!-- Operace dostupné ve verzi 3 -->
-    <string-array name="operations_array_v3">
+    <!-- Operace dostupné ve verzi 4 -->
+    <string-array name="operations_array_v4">
         <item>Sčítání</item>
         <item>Odčítání</item>
         <item>Násobení</item>
         <item>Dělení</item>
         <item>Modulo</item>
+        <item>Ntou mocninu</item>
+        <item>Ntou odmocninu</item>
+        <item>Faktoriál</item>
     </string-array>
 </resources>
